@@ -15,23 +15,24 @@ module.exports.handleUserList = (req, res, next) => {
   });
 };
 
-module.exports.handleCreateUser = (req, res, next) => {
-  let newUser = userSchema({
-    uid: req.body.uid,
+module.exports.handleCreateUser = async (req, res, next) => {
+  //get last uid
+  let lastUser = await userSchema.findOne().sort({ uid: -1 });
+  let newUser = new userSchema({
+    uid: lastUser.uid + 1,
     name: req.body.name,
     username: req.body.username,
     password: req.body.password,
     role: req.body.role,
   });
-
-  userSchema.create(newUser, (err, userSchema) => {
-    if (err) {
-      console.log(err);
-      res.end(err);
-    } else {
-      res.json({ status: true, msg: "User Registered Successfully" });
-    }
-  });
+  console.log(req.body);
+  try {
+    await newUser.save();
+    res.json({ status: true, msg: "User Created Successfully" });
+  } catch (err) {
+    console.log(err);
+    res.json({ status: false, msg: "Failed to Create User" });
+  }
 };
 
 module.exports.handleUpdateUser = (req, res, next) => {
