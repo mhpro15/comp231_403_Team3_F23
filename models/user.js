@@ -21,10 +21,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  isAdmin: {
-    type: Boolean,
+  role: {
+    type: Number,
     required: true,
-    default: false,
+    default: 0,
   },
 });
 
