@@ -5,21 +5,21 @@ let passport = require("passport");
 
 let userSchema = require("../models/user");
 
-module.exports.handleUserList = (req, res, next) => {
-  userSchema.find((err, userList) => {
-    if (err) {
-      return console.error(err);
-    } else {
-      res.json(userList);
-    }
-  });
+module.exports.handleUserList = async (req, res, next) => {
+  try {
+    let userList = await userSchema.find();
+    res.json({ status: true, data: userList });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: false, msg: "Failed to Fetch User List" });
+  }
 };
 
 module.exports.handleCreateUser = async (req, res, next) => {
   //get last uid
   let lastUser = await userSchema.findOne().sort({ uid: -1 });
   let newUser = new userSchema({
-    uid: lastUser.uid + 1,
+    uid: Number(lastUser.uid) + 1,
     name: req.body.name,
     username: req.body.username,
     password: req.body.password,
