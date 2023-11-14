@@ -65,3 +65,11 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+
+// setting the port for the server to listen on
+const PORT = process.env.PORT || 3000; 
+
+// starting the server and listening on the port
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
