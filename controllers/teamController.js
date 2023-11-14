@@ -6,7 +6,7 @@ let passport = require("passport");
 let teamSchema = require("../models/team");
 
 
-//GET
+//GET TEAMS
 module.exports.handleTeamList = async (req, res, next) => {
   try {
     let teamList = await teamSchema.find();
@@ -17,7 +17,7 @@ module.exports.handleTeamList = async (req, res, next) => {
   }
 };
 
-//CREATE
+//CREATE TEAMS
 module.exports.handleCreateTeam = async (req, res, next) => {
   //get last uid
   let lastTeam = await teamSchema.findOne().sort({ tid: -1 });
@@ -38,7 +38,7 @@ module.exports.handleCreateTeam = async (req, res, next) => {
   }
 };
 
-//UPDATE
+//UPDATE TEAMS
 module.exports.handleUpdateTeam = (req, res, next) => {
   let id = req.params.id;
 
@@ -61,7 +61,7 @@ module.exports.handleUpdateTeam = (req, res, next) => {
   });
 };
 
-//DELETE
+//DELETE TEAMS
 module.exports.handleDeleteTeam = (req, res, next) => {
   let id = req.params.id;
 
