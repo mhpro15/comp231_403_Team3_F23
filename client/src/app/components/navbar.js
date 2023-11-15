@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 
 export default function Navbar() {
   const router = useRouter();
@@ -16,7 +15,7 @@ export default function Navbar() {
       {session?.user ? (
         <>
           <span>Welcome, {session.user.name}!</span>
-          <button type="button" onClick={() => signOut()}>
+          <button type="button" onClick={() => signOut({ redirect: false })}>
             Logout
           </button>
         </>

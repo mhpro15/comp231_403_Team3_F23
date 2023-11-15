@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-
+import { useRouter } from "next/navigation";
 export default function Register() {
   // State to track registration form fields
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-
+  const router = useRouter();
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,8 +35,10 @@ export default function Register() {
           console.log(data);
           if (data.status) {
             alert("User Created Successfully");
+            router.push("/login");
           } else {
             alert("Failed to Create User");
+            router.refresh();
           }
         });
     } catch (error) {
