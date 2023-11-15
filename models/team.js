@@ -24,10 +24,9 @@ const teamSchema = new mongoose.Schema({
   hackathonName: {
     type: String,
     required: true,
-    
   },
 });
 
-const User = mongoose.model("Team", teamSchema);
+const Team = mongoose.model("Team", teamSchema);
 
 module.exports = Team;

@@ -4,9 +4,9 @@ var router = express.Router();
 let controller = require("../controllers/teamController");
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  res.render("index", { title: "COMP231" });
-});
+// router.get("/", function (req, res, next) {
+//   res.render("index", { title: "COMP231" });
+// });
 
 router.get("/team-list", controller.handleTeamList);
 
