@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
+import "./styles.css";
 
 export default function Navbar() {
   const router = useRouter();

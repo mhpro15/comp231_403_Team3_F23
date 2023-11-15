@@ -23,7 +23,7 @@ export default function Register() {
         name: name,
         password: password,
       };
-      fetch("http://localhost:3000/create-user", {
+      fetch("http://localhost:3002/create-user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
