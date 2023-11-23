@@ -10,10 +10,16 @@
   }
   
   .navbar nav {
-    display: flex; 
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-between; 
   }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
   
   .navbar button {
     margin: 0 5px; 

@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import "./register.css";
+
 export default function Register() {
   // State to track registration form fields
   const [username, setUsername] = useState("");
@@ -48,7 +50,7 @@ export default function Register() {
   };
 
   return (
-    <div>
+    <div className="register-container">
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <label>

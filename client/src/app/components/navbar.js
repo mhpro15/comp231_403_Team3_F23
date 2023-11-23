@@ -15,6 +15,7 @@ export default function Navbar() {
       <button type="button" onClick={() => router.push("/")}>
         Home
       </button>
+      <div className="navbar-right">
       {session?.user ? (
         <>
           <span>Welcome, {session.user.name}!</span>
@@ -32,6 +33,7 @@ export default function Navbar() {
           </button>
         </>
       )}
+       </div>
     </nav>
     </div>
   );
