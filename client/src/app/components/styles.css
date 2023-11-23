@@ -1,0 +1,34 @@
+/* styles.css */
+
+/* Navbar styles */
+.navbar {
+    background-color: #19747E; 
+    color: #fff; 
+    padding: 10px 20px; 
+  }
+  
+  .navbar nav {
+    display: flex; 
+    align-items: center;
+    justify-content: space-between; 
+  }
+  
+  .navbar button {
+    margin: 0 5px; 
+    padding: 8px 16px; 
+    border: none; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    background-color: #D1E8E2;
+    color: #19747E; 
+  }
+  
+  .navbar button:hover {
+    background-color: #A9D6E5; 
+    color: #fff; 
+  }
+  
+  .navbar span {
+    margin-right: 10px; 
+  }
+  
