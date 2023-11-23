@@ -1,7 +1,32 @@
+/* homepage.css */
+
 .homeDiv {
-  background-color: bisque;
+  background-color: #E2E2E2; 
+  color: #19747E; 
+  padding: 20px; 
+  border-radius: 10px; 
+  font-size: 20px;
 }
 
-.text {
-  font-size: larger;
+.homeDiv h1 {
+  color: #19747E; 
+  margin-bottom: 20px; 
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.team-item {
+  background-color: #ffffff; 
+  color: #000000; 
+  padding: 10px; 
+  margin-bottom: 10px; 
+  border-radius: 5px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+}
+
+.team-list{
+  display: flex;
+  flex-direction: column;
 }

@@ -3,9 +3,11 @@ import TeamCard from "./teamcard";
 
 export default function TeamList(props) {
   return (
-    <div>
+    <div className="team-list">
       {props.teams.map((team) => (
-        <TeamCard key={team.id} team={team} />
+        <div key={team.id} className="team-item">
+          <TeamCard team={team} />
+        </div>
       ))}
     </div>
   );

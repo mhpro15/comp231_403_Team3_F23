@@ -11,7 +11,7 @@ const teams = [
 function HomePage() {
   return (
     <div className="homeDiv text">
-      <h1>Teams</h1>
+      <h1>TEAMS</h1>
       <TeamList teams={teams} />
     </div>
   );
