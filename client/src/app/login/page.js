@@ -1,4 +1,5 @@
 "use client";
+import "./login.css";
 import React, { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -41,8 +42,8 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <h2>Welcome to Login Page</h2>
+    <div className="login-container">
+      <h2>Welcome to the Login Page</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Username:
