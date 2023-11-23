@@ -4,7 +4,7 @@ let mongoose = require("mongoose");
 let passport = require("passport");
 
 let teamSchema = require("../models/team");
-
+let userSchema = require("../models/user");
 
 //GET TEAMS
 module.exports.handleTeamList = async (req, res, next) => {
@@ -21,11 +21,19 @@ module.exports.handleTeamList = async (req, res, next) => {
 module.exports.handleCreateTeam = async (req, res, next) => {
   //get last uid
   let lastTeam = await teamSchema.findOne().sort({ tid: -1 });
+  let foundUser = await userSchema.findOne({ username: req.body.username });
+
+  if (lastTeam == null) {
+    lastTeam = { tid: 0 };
+  }
   let newTeam = new teamSchema({
     tid: Number(lastTeam.tid) + 1,
     teamName: req.body.teamName,
-    leaderName: req.body.leaderName,
-    members: req.body.members,
+    leader: {
+      name: foundUser.name,
+      username: foundUser.username,
+      uid: foundUser.uid,
+    },
     hackathonName: req.body.hackathonName,
   });
   console.log(req.body);

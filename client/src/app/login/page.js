@@ -28,6 +28,7 @@ export default function Login() {
         username,
         password,
         redirect: false,
+        callbackUrl: "/"
       });
 
       if (res.error) {

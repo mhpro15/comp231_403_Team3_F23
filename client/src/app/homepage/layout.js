@@ -1,3 +1,3 @@
-export default function HomePageLauout({ children }) {
+export default function HomePageLayout({ children }) {
   return <section>{children}</section>;
 }

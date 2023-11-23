@@ -1,7 +1,7 @@
 //test push by heba
 
 const mongoose = require("mongoose");
-
+const userSchema = require("./user");
 const teamSchema = new mongoose.Schema({
   tid: {
     type: String,
@@ -12,14 +12,14 @@ const teamSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  leaderName: {
-    type: String,
+  leader: {
+    type: { name: String, username: String, uid: String },
     required: true,
     unique: true,
   },
   members: {
     type: String,
-    required: true,
+    required: false,
   },
   hackathonName: {
     type: String,
