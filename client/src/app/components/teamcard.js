@@ -2,9 +2,11 @@ import React from "react";
 
 function TeamCard(props) {
   return (
-    <div>
-      <h2>{props.team.name}</h2>
-      <p>{props.team.description}</p>
+    <div className="card">
+      <h2>{props.team.teamName}</h2>
+      <p>Hackathon: {props.team.hackathonName}</p>
+      <p>Leader: {props.team.leader.name}</p>
+      <button type="button">Join</button>
     </div>
   );
 }

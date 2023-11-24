@@ -8,7 +8,7 @@ import "./styles.css";
 export default function Navbar() {
   const router = useRouter();
   const { data: session } = useSession();
-
+  console.log(session);
   return (
     <div className="navbar">
       <nav>

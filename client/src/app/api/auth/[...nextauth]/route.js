@@ -11,7 +11,6 @@ export const authOptions = {
 
       async authorize(credentials) {
         const { username, password } = credentials;
-        console.log("Credentials: ", credentials);
         try {
           await connectMongoDB();
           const user = await User.findOne({ username });
@@ -31,12 +30,31 @@ export const authOptions = {
       },
     }),
   ],
+
   session: {
     strategy: "jwt",
+    user: {
+      name: "name",
+      username: "username",
+      email: "email",
+      image: "image",
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/",
+  },
+  callbacks: {
+    async session({ session, user, token }) {
+      // // session.user.username = userN;
+      // console.log("Session: ", user);
+      session.user.id = token.sub;
+      return session;
+    },
+    async jwt({ token, user, account, profile, isNewUser }) {
+      // console.log("Token: ", token);
+      return token;
+    },
   },
 };
 

@@ -21,7 +21,7 @@ module.exports.handleTeamList = async (req, res, next) => {
 module.exports.handleCreateTeam = async (req, res, next) => {
   //get last uid
   let lastTeam = await teamSchema.findOne().sort({ tid: -1 });
-  let foundUser = await userSchema.findOne({ username: req.body.username });
+  let foundUser = await userSchema.findOne({ _id: req.body.userId });
 
   if (lastTeam == null) {
     lastTeam = { tid: 0 };
@@ -31,7 +31,6 @@ module.exports.handleCreateTeam = async (req, res, next) => {
     teamName: req.body.teamName,
     leader: {
       name: foundUser.name,
-      username: foundUser.username,
       uid: foundUser.uid,
     },
     hackathonName: req.body.hackathonName,

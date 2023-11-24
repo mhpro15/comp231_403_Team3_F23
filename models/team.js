@@ -15,7 +15,7 @@ const teamSchema = new mongoose.Schema({
   leader: {
     type: { name: String, username: String, uid: String },
     required: true,
-    unique: true,
+    unique: false,
   },
   members: {
     type: String,
