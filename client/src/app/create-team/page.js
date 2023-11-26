@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import "./create-team.css";
 
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -63,7 +64,7 @@ const CreateTeam = () => {
   };
 
   return (
-    <div>
+    <div className="create-team-container">
       <h1>Create Team{session?.user.username}</h1>
       <form onSubmit={handleSubmit}>
         <label>

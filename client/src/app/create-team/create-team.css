@@ -1,0 +1,48 @@
+/* create-team.css */
+
+.create-team-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #E2E2E2;
+    border-radius: 8px;
+    background-color: #D1E8E2; 
+  }
+  
+  .create-team-container h1 {
+    margin-bottom: 20px;
+    color: #19747E; 
+  }
+  
+  label {
+    color: #19747E; 
+  }
+  h1{
+    text-align: center;
+    font-weight: 600;
+    font-size: larger;
+
+  }
+  
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #E2E2E2;
+    border-radius: 5px;
+  }
+  
+  button[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #19747E; 
+    color: #ffffff; 
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #A9D6E5; 
+  }
+  
