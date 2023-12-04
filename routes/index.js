@@ -8,6 +8,8 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "COMP231" });
 });
 
+router.get("/user/:id", controller.getUser);
+
 router.get("/user-list", controller.handleUserList);
 
 router.post("/create-user", controller.handleCreateUser);

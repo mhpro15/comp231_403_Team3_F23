@@ -5,6 +5,17 @@ let passport = require("passport");
 
 let userSchema = require("../models/user");
 
+module.exports.getUser = async (req, res, next) => {
+  try {
+    console.log(req.params.id);
+    let user = await userSchema.findOne({ _id: req.params.id });
+    res.json({ status: true, data: user });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: false, msg: "Failed to Fetch User" });
+  }
+};
+
 module.exports.handleUserList = async (req, res, next) => {
   try {
     let userList = await userSchema.find();
@@ -35,37 +46,35 @@ module.exports.handleCreateUser = async (req, res, next) => {
   }
 };
 
-module.exports.handleUpdateUser = (req, res, next) => {
+module.exports.handleUpdateUser = async (req, res, next) => {
   let id = req.params.id;
 
-  let updateUser = userSchema({
-    _id: id,
-    uid: req.body.uid,
-    name: req.body.name,
-    username: req.body.username,
-    password: req.body.password,
-    role: req.body.role,
-  });
+  console.log("Updating user:", req.body);
 
-  userSchema.updateOne({ _id: id }, updateUser, (err) => {
-    if (err) {
-      console.log(err);
-      res.end(err);
-    } else {
-      res.json({ status: true, msg: "User Updated Successfully" });
-    }
-  });
+  try {
+    const newUser = await userSchema.findOneAndUpdate(
+      { _id: id },
+      { name: req.body.name },
+      {
+        new: true,
+      }
+    );
+    console.log("Success:", newUser);
+    res.json({ status: true, msg: "User Updated Successfully" });
+  } catch (err) {
+    console.log(err);
+    res.json({ status: false, msg: "Failed to Update User" });
+  }
 };
 
-module.exports.handleDeleteUser = (req, res, next) => {
+module.exports.handleDeleteUser = async (req, res, next) => {
   let id = req.params.id;
-
-  userSchema.deleteOne({ _id: id }, (err) => {
-    if (err) {
-      console.log(err);
-      res.end(err);
-    } else {
-      res.json({ status: true, msg: "User Deleted Successfully" });
-    }
-  });
+  try {
+    let deleteStat = await userSchema.deleteOne({ _id: id });
+    console.log("Success:", deleteStat);
+    res.json({ status: true, msg: "User Deleted Successfully" });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: false, msg: "Failed to Delete User" });
+  }
 };

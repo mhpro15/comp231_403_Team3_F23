@@ -21,7 +21,12 @@ export default function Navbar() {
               <button type="button" onClick={() => router.push("/create-team")}>
                 Create Team
               </button>
-              <span>Welcome, {session.user.name}!</span>
+              <span>
+                Welcome,{" "}
+                <button type="button" onClick={() => router.push("/user")}>
+                  {session.user.name}!
+                </button>
+              </span>
               <button
                 type="button"
                 onClick={() => signOut({ redirect: false })}
