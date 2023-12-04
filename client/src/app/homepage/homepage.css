@@ -16,26 +16,40 @@
   text-align: center;
 }
 
+.filter-container {
+  display: flex;
+}
+
 .team-item {
-  background-color: #ffffff; 
-  color: #000000; 
-  padding: 15px; 
-  margin-bottom: 10px; 
-  margin: 10px;
+  border: 1px solid #ccc; 
   border-radius: 7px; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px; 
+  background-color: #f8f8f8; 
+  transition: all 0.3s ease; 
+  flex: 1 0 calc(25% - 20px); /* allows for 4 items per row */
+  max-width: calc(25% - 20px); 
+  margin: 10px;
   
-  
+}
+
+.team-item:hover {
+  transform: translateY(-3px); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .team-item h3 {
   text-align: left; 
   margin-bottom: 5px; 
   
+  
 }
 
 .team-list{
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: row; 
+  justify-content: flex-end;
+  flex: 1;
+  margin-left: auto;
+
 }
