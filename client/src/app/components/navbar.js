@@ -1,5 +1,5 @@
 "use client";
-
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
@@ -9,6 +9,24 @@ export default function Navbar() {
   const router = useRouter();
   const { data: session } = useSession();
   console.log(session);
+  const [user, setUser] = useState({
+    data: { name: session?.user.name },
+  });
+  useEffect(() => {
+    // Fetch user information here
+    // Example API call:
+    console.log("session", session?.user.id);
+
+    fetch("http://localhost:3002/user/" + session?.user.id)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success user:", data);
+        setUser(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching user information:", error);
+      });
+  }, [session?.user.id]);
   return (
     <div className="navbar">
       <nav>
@@ -24,7 +42,7 @@ export default function Navbar() {
               <span>
                 Welcome,{" "}
                 <button type="button" onClick={() => router.push("/user")}>
-                  {session.user.name}!
+                  {user?.data?.name}!
                 </button>
               </span>
               <button
