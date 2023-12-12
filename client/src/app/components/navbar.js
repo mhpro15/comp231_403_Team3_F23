@@ -14,7 +14,7 @@ export default function Navbar() {
   });
   useEffect(() => {
     // Fetch user information here
-    // Example API call:
+    // Example API calls:
     console.log("session", session?.user.id);
 
     fetch("http://localhost:3002/user/" + session?.user.id)
